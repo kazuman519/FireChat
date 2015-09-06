@@ -15,6 +15,7 @@
 		A4FD326B1B9C2E5500A2CEF0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4FD326A1B9C2E5500A2CEF0 /* Images.xcassets */; };
 		A4FD326E1B9C2E5500A2CEF0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FD326C1B9C2E5500A2CEF0 /* LaunchScreen.xib */; };
 		A4FD327A1B9C2E5500A2CEF0 /* FireChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FD32791B9C2E5500A2CEF0 /* FireChatTests.m */; };
+		A4FD32851B9C392200A2CEF0 /* FireBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FD32841B9C392200A2CEF0 /* FireBaseManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		A4FD32731B9C2E5500A2CEF0 /* FireChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FD32781B9C2E5500A2CEF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4FD32791B9C2E5500A2CEF0 /* FireChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FireChatTests.m; sourceTree = "<group>"; };
+		A4FD32831B9C392200A2CEF0 /* FireBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireBaseManager.h; sourceTree = "<group>"; };
+		A4FD32841B9C392200A2CEF0 /* FireBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FireBaseManager.m; sourceTree = "<group>"; };
 		AE0A369473BA6B6194864EE1 /* Pods-FireChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FireChat/Pods-FireChat.debug.xcconfig"; sourceTree = "<group>"; };
 		BE9A8B83AE8AB4096426151B /* libPods-FireChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FireChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -104,6 +107,8 @@
 				A4FD326A1B9C2E5500A2CEF0 /* Images.xcassets */,
 				A4FD326C1B9C2E5500A2CEF0 /* LaunchScreen.xib */,
 				A4FD325D1B9C2E5500A2CEF0 /* Supporting Files */,
+				A4FD32831B9C392200A2CEF0 /* FireBaseManager.h */,
+				A4FD32841B9C392200A2CEF0 /* FireBaseManager.m */,
 			);
 			path = FireChat;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4FD32851B9C392200A2CEF0 /* FireBaseManager.m in Sources */,
 				A4FD32661B9C2E5500A2CEF0 /* ViewController.m in Sources */,
 				A4FD32631B9C2E5500A2CEF0 /* AppDelegate.m in Sources */,
 				A4FD32601B9C2E5500A2CEF0 /* main.m in Sources */,
