@@ -5,6 +5,7 @@ dependencies:
   override:
     - pod install:
         timeout: 300
+deployment: 
   beta: 
     branch: master 
     commands:
