@@ -7,7 +7,7 @@
 //
 
 #import "ChatViewController.h"
-#import "FireBaseManager.h"
+#import "ChatManager.h"
 
 static NSString * const kMessageViewUserId = @"userId";
 static NSString * const kMessageViewBotId = @"botId";
@@ -19,7 +19,7 @@ static NSString * const kMessageViewBotId = @"botId";
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubble;
 @property (strong, nonatomic) JSQMessagesAvatarImage *incomingAvatar;
 @property (strong, nonatomic) JSQMessagesAvatarImage *outgoingAvatar;
-@property (strong, nonatomic) FireBaseManager *fireBaseManager;
+@property (strong, nonatomic) ChatManager *chatManager;
 @property (strong, nonatomic) NSString *botId;
 @property (strong, nonatomic) NSString *userId;
 
@@ -34,7 +34,7 @@ static NSString * const kMessageViewBotId = @"botId";
     [self initUser];
     
     // firebase manager初期化
-    self.fireBaseManager = [[FireBaseManager alloc] initWithId:self.userId bot:self.botId observer:self callback:@selector(reqMessage)];
+    self.chatManager = [[ChatManager alloc] initWithId:self.userId bot:self.botId observer:self callback:@selector(reqMessage)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,7 +110,7 @@ static NSString * const kMessageViewBotId = @"botId";
     // 送信
     [self finishSendingMessageAnimated:YES];
     
-    [self.fireBaseManager setFbValue:@{@"user_id" : senderId,
+    [self.chatManager setFbValue:@{@"user_id" : senderId,
                              @"message" : text,
                              @"time_stamp" : [NSString stringWithFormat:@"%ld",(long)[[NSDate date] timeIntervalSince1970]]
                              }];
@@ -186,7 +186,7 @@ static NSString * const kMessageViewBotId = @"botId";
 -(void)reqMessage {
     
     // メッセージ情報をQuery
-    [self.fireBaseManager reqMessageQuery:@selector(resultQuery:) observer:self];
+    [self.chatManager requestMessageQuery:@selector(resultQuery:) observer:self];
 }
 
 -(void)resultQuery:(NSNotification*)userInfo {
