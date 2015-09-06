@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <JSQMessagesViewController/JSQMessages.h>
 
-@interface MessageView : NSObject
+@interface MessageView : JSQMessagesViewController
 
 @end

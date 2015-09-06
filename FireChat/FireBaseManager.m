@@ -7,7 +7,6 @@
 //
 
 #import "FireBaseManager.h"
-#import <Firebase/Firebase.h>
 
 static NSString * const kRootUrl = @"https://kumasandeat.firebaseio.com/";
 static NSString * const kUserListUrl = @"https://kumasandeat.firebaseio.com/user_list/";
