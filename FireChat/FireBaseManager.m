@@ -13,8 +13,8 @@ static NSString * const kUserListUrl = @"https://kumasandate.firebaseio.com/user
 static NSString * const kRoomListUrl = @"https://kumasandate.firebaseio.com/room_list/";
 static NSString * const kMessageListUrl = @"https://kumasandate.firebaseio.com/message_list/";
 
-static NSString * const kChatRoomId = @"111";
-static NSString * const kQueryMessage = @"auery message";
+static NSString * const kChatRoomId = @"roomId";
+static NSString * const kQueryMessage = @"aueryMessage";
 static NSString * const kCreateRoom = @"createRoom";
 
 

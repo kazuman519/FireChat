@@ -16,7 +16,6 @@
 		A4FD326E1B9C2E5500A2CEF0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FD326C1B9C2E5500A2CEF0 /* LaunchScreen.xib */; };
 		A4FD327A1B9C2E5500A2CEF0 /* FireChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FD32791B9C2E5500A2CEF0 /* FireChatTests.m */; };
 		A4FD32851B9C392200A2CEF0 /* FireBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FD32841B9C392200A2CEF0 /* FireBaseManager.m */; };
-		A4FD32881B9C45FB00A2CEF0 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FD32871B9C45FB00A2CEF0 /* MessageView.m */; };
 		A4FD328B1B9C4C9A00A2CEF0 /* ava_bot.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FD32891B9C4C9A00A2CEF0 /* ava_bot.png */; };
 		A4FD328C1B9C4C9A00A2CEF0 /* ava_mugicha.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FD328A1B9C4C9A00A2CEF0 /* ava_mugicha.png */; };
 		A4FD328F1B9C51C300A2CEF0 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FD328E1B9C51C300A2CEF0 /* ChatViewController.m */; };
@@ -49,8 +48,6 @@
 		A4FD32791B9C2E5500A2CEF0 /* FireChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FireChatTests.m; sourceTree = "<group>"; };
 		A4FD32831B9C392200A2CEF0 /* FireBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireBaseManager.h; sourceTree = "<group>"; };
 		A4FD32841B9C392200A2CEF0 /* FireBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FireBaseManager.m; sourceTree = "<group>"; };
-		A4FD32861B9C45FB00A2CEF0 /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
-		A4FD32871B9C45FB00A2CEF0 /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		A4FD32891B9C4C9A00A2CEF0 /* ava_bot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ava_bot.png; sourceTree = "<group>"; };
 		A4FD328A1B9C4C9A00A2CEF0 /* ava_mugicha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ava_mugicha.png; sourceTree = "<group>"; };
 		A4FD328D1B9C51C300A2CEF0 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
@@ -121,8 +118,6 @@
 				A4FD325D1B9C2E5500A2CEF0 /* Supporting Files */,
 				A4FD32831B9C392200A2CEF0 /* FireBaseManager.h */,
 				A4FD32841B9C392200A2CEF0 /* FireBaseManager.m */,
-				A4FD32861B9C45FB00A2CEF0 /* MessageView.h */,
-				A4FD32871B9C45FB00A2CEF0 /* MessageView.m */,
 				A4FD328D1B9C51C300A2CEF0 /* ChatViewController.h */,
 				A4FD328E1B9C51C300A2CEF0 /* ChatViewController.m */,
 			);
@@ -302,7 +297,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4FD32851B9C392200A2CEF0 /* FireBaseManager.m in Sources */,
-				A4FD32881B9C45FB00A2CEF0 /* MessageView.m in Sources */,
 				A4FD328F1B9C51C300A2CEF0 /* ChatViewController.m in Sources */,
 				A4FD32661B9C2E5500A2CEF0 /* ViewController.m in Sources */,
 				A4FD32631B9C2E5500A2CEF0 /* AppDelegate.m in Sources */,
