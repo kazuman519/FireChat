@@ -1,5 +1,5 @@
 deployment: 
   beta: 
     branch: master 
-      commands: 
+      commands:
         - bundle exec fastlane deploy
