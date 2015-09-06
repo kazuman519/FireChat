@@ -24,11 +24,11 @@ default_platform :ios
 platform :ios do
 
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
 
     cocoapods
 
-    # increment_build_number
+    #  increment_build_number
 
     gym(scheme: "FireChat") # Build your app - more options available
 
@@ -38,6 +38,7 @@ platform :ios do
   desc "Runs all the tests"
   lane :test do
     snapshot
+    crashlytics
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
@@ -65,17 +66,17 @@ platform :ios do
   after_all do |lane|
     # This block is called, only if the executed lane was successful
     
-    # slack(
-    #   message: "Successfully deployed new App Update."
-    # )
+    slack(
+      message: "Successfully deployed new App Update."
+    )
   end
 
 
   error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
+    slack(
+      message: exception.message,
+      success: false
+    )
   end
 end
 
