@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C47C60A6-892E-4A5F-80A2-C3EB76B82EB4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FireChat</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9F70DA64B732AFDBE4B3BFA9D0990FE55A2E588B</key>
+		<string>github.com:kazuman519/FireChat.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FireChat.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9F70DA64B732AFDBE4B3BFA9D0990FE55A2E588B</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:kazuman519/FireChat.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9F70DA64B732AFDBE4B3BFA9D0990FE55A2E588B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9F70DA64B732AFDBE4B3BFA9D0990FE55A2E588B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FireChat</string>
+		</dict>
+	</array>
+</dict>
+</plist>

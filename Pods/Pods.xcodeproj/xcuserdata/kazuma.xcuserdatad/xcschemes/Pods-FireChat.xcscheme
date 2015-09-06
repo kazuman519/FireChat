@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D84F390AA6DD1A0D83F67A0B"
+               BlueprintIdentifier = "586C9BFE87BC747D04E3005E"
                BuildableName = "libPods-FireChat.a"
                BlueprintName = "Pods-FireChat"
                ReferencedContainer = "container:Pods.xcodeproj">
