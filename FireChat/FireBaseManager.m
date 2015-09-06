@@ -8,10 +8,10 @@
 
 #import "FireBaseManager.h"
 
-static NSString * const kRootUrl = @"https://kumasandeat.firebaseio.com/";
-static NSString * const kUserListUrl = @"https://kumasandeat.firebaseio.com/user_list/";
-static NSString * const kRoomListUrl = @"https://kumasandeat.firebaseio.com/room_list/";
-static NSString * const kMessageListUrl = @"https://kumasandeat.firebaseio.com/message_list/";
+static NSString * const kRootUrl = @"https://kumasandate.firebaseio.com/";
+static NSString * const kUserListUrl = @"https://kumasandate.firebaseio.com/user_list/";
+static NSString * const kRoomListUrl = @"https://kumasandate.firebaseio.com/room_list/";
+static NSString * const kMessageListUrl = @"https://kumasandate.firebaseio.com/message_list/";
 
 static NSString * const kChatRoomId = @"111";
 static NSString * const kQueryMessage = @"auery message";
