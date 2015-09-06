@@ -4,6 +4,7 @@
 target 'FireChat' do
 
 pod 'JSQMessagesViewController' 
+pod 'Firebase'
 
 end
 
