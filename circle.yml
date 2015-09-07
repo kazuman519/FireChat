@@ -1,4 +1,7 @@
+
 machine:
+  xcode:
+    version: "6.4"
   environment:
     XCODE_SCHEME: FireChat
 dependencies:
