@@ -19,7 +19,7 @@
 -(void)setFbValue:(id)newRecode
          withPath:(NSString *)path;
 
--(void)setFbValue:(id)newRecode;
+-(void)sendMessage:(NSString *)message;
 
 -(void)requestMessageQuery:(SEL)callback
                observer:(id)setObsever;

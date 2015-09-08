@@ -97,25 +97,8 @@ static NSString * const kMessageViewBotId = @"botId";
          senderDisplayName:(NSString *)senderDisplayName
                       date:(NSDate *)date
 {
-    // 送信サウンド
-    [JSQSystemSoundPlayer jsq_playMessageSentSound];
-    
-    // メッセージオブジェクト生成(id + name + 日付 + テキスト)
-    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
-                                             senderDisplayName:senderDisplayName
-                                                          date:date
-                                                          text:text];
-    [self.messageArray addObject:message];
-    
-    // 送信
-    [self finishSendingMessageAnimated:YES];
-    
-    [self.chatManager setFbValue:@{@"user_id" : senderId,
-                             @"message" : text,
-                             @"time_stamp" : [NSString stringWithFormat:@"%ld",(long)[[NSDate date] timeIntervalSince1970]]
-                             }];
-    
-    [self receiveAutoMessage];
+//    [self addMessage:text senderId:senderId senderDisplayName:senderDisplayName date:date];
+    [self.chatManager sendMessage:text];
 }
 
 
@@ -149,7 +132,7 @@ static NSString * const kMessageViewBotId = @"botId";
 
 #pragma mark - UICollectionViewDataSource
 
-// ④ アイテムの総数を返す
+// アイテムの総数を返す
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.messageArray.count;
@@ -158,7 +141,7 @@ static NSString * const kMessageViewBotId = @"botId";
 
 #pragma mark - Auto Message
 
-// ⑥ 返信メッセージを受信する (自動)
+// 返信メッセージを受信する (自動)
 - (void)receiveAutoMessage
 {
     // 1秒後にメッセージを受信する
@@ -171,46 +154,52 @@ static NSString * const kMessageViewBotId = @"botId";
 
 - (void)didFinishMessageTimer:(NSTimer*)timer
 {
-    // 効果音を再生する
-    [JSQSystemSoundPlayer jsq_playMessageSentSound];
-    // 新しいメッセージデータを追加する
-    JSQMessage *message = [JSQMessage messageWithSenderId:@"user2"
-                                              displayName:@"underscore"
-                                                     text:@"Hello"];
-    [self.messageArray addObject:message];
-    // メッセージの受信処理を完了する (画面上にメッセージが表示される)
-    [self finishReceivingMessageAnimated:YES];
+    [self addMessage:@"Hello"
+            senderId:@"user2"
+   senderDisplayName:@"underscore"
+                date:nil];
 }
 
-
--(void)reqMessage {
+-(void)addMessage:(NSString *)text
+         senderId:(NSString *)senderId
+senderDisplayName:(NSString *)senderDisplayName
+             date:(NSDate *)date
+{
+    // 送信サウンド
+    [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
+    // メッセージオブジェクト生成(id + name + 日付 + テキスト)
+    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
+                                             senderDisplayName:senderDisplayName
+                                                          date:date
+                                                          text:text];
+    [self.messageArray addObject:message];
+    
+    // 送信
+    [self finishSendingMessageAnimated:YES];
+}
+
+-(void)reqMessage
+{
     // メッセージ情報をQuery
     [self.chatManager requestMessageQuery:@selector(resultQuery:) observer:self];
 }
 
--(void)resultQuery:(NSNotification*)userInfo {
-    
+-(void)resultQuery:(NSNotification*)userInfo
+{
+    NSLog(@"kita---------");
     FDataSnapshot *snapshot = (FDataSnapshot*)userInfo.userInfo;
+    NSDictionary *dictionary = [snapshot value];
     
-    NSEnumerator *enumerator = snapshot.children;
-    FDataSnapshot* obj;
+    NSLog(@"fa-----------> %@", [dictionary objectForKey:@"message"]);
     
-    while( obj = [enumerator nextObject] ) {
-        
-        // firebase格納のメッセージの取り出し
-        NSDictionary *messageVal = obj.value;
-        
-        // メッセージオブジェクト生成(id + name + 日付 + テキスト)
-        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:[messageVal valueForKey:@"user_id"]
-                                                 senderDisplayName:@"mugicha"
-                                                              date:[NSDate dateWithTimeIntervalSince1970:[[messageVal valueForKey:@"time_stamp"] intValue]]
-                                                              text:[messageVal objectForKey:@"message"]];
-        [self.messageArray addObject:message];
-        
-        // 送信
-        [self finishSendingMessageAnimated:YES];
-        
-    }
+    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:[dictionary valueForKey:@"user_id"]
+                                             senderDisplayName:@"hoge"
+                                                          date:[NSDate dateWithTimeIntervalSince1970:[[dictionary valueForKey:@"time_stamp"] intValue]]
+                                                          text:[dictionary objectForKey:@"message"]];
+    [self.messageArray addObject:message];
+    
+    // 送信
+    [self finishSendingMessageAnimated:YES];
 }
 @end

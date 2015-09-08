@@ -35,8 +35,8 @@ static NSString * const kCreateRoom = @"createRoom";
 {
     // notification center登録
     // chat room生成完了を通知するための配慮
-    NSNotificationCenter *pNotificationCenter = [NSNotificationCenter defaultCenter];
-    [pNotificationCenter addObserver:setObsever
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:setObsever
                             selector:callback
                                 name:kCreateRoom
                               object:nil];
@@ -78,7 +78,6 @@ static NSString * const kCreateRoom = @"createRoom";
                                                @"create_at" : [NSString stringWithFormat:@"%ld",(long)[[NSDate date] timeIntervalSince1970]]
                                                }
                                        };
-            
             //user list
             NSDictionary *userList = @{
                                        _userId :   @{
@@ -104,23 +103,40 @@ static NSString * const kCreateRoom = @"createRoom";
             NSString *messageURL = [NSString stringWithFormat:@"%@%@/",kMessageListUrl,roomID];
             _fbMessageListManager = [[Firebase alloc] initWithUrl:messageURL];
             
+            // post
+            [NSNotification notificationWithName:kQueryMessage object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kCreateRoom
+                                                                object:self
+                                                              userInfo:nil];
         }
         else {
             // 永続化した情報の読み出し
             NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
             NSString *roomIdFromUserDef = [userDef stringForKey:kChatRoomId];
             
-            // message list用URL
-            NSString *messageURL = [NSString stringWithFormat:@"%@%@/",kMessageListUrl,roomIdFromUserDef];
-            _fbMessageListManager = [[Firebase alloc] initWithUrl:messageURL];
+            [[_fbRoomListManager queryOrderedByValue] observeSingleEventOfType:FEventTypeValue andPreviousSiblingKeyWithBlock:^(FDataSnapshot *snapshot, NSString *prevKey) {
+                
+                NSString *roomId = [[[snapshot value] allKeys] firstObject];
+                
+                // message list用URL
+                NSString *messageURL = [NSString stringWithFormat:@"%@%@/",kMessageListUrl, roomId];
+                _fbMessageListManager = [[Firebase alloc] initWithUrl:messageURL];
+                
+                [NSNotification notificationWithName:kQueryMessage object:self];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kCreateRoom
+                                                                    object:self
+                                                                  userInfo:nil];
+            }];
         }
-        
-        // post
-        [NSNotification notificationWithName:kQueryMessage object:self];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kCreateRoom
-                                                            object:self
-                                                          userInfo:nil];
     }];
+}
+
+-(void)sendMessage:(NSString *)message
+{
+    [self setFbValue:@{@"user_id" : _userId,
+                       @"message" : message,
+                       @"time_stamp" : [NSString stringWithFormat:@"%ld",(long)[[NSDate date] timeIntervalSince1970]]
+                       }];
 }
 
 -(void)setFbValue:(id)newRecode
@@ -138,17 +154,19 @@ static NSString * const kCreateRoom = @"createRoom";
                   observer:(id)setObsever
 {
     // notification center登録
-    NSNotificationCenter *pNotificationCenter = [NSNotificationCenter defaultCenter];
-    [pNotificationCenter addObserver:setObsever
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:setObsever
                             selector:callback
                                 name:kQueryMessage
                               object:nil];
     
-    [[_fbMessageListManager queryOrderedByValue] observeSingleEventOfType:FEventTypeValue
+    [[_fbMessageListManager queryOrderedByValue] observeEventType:FEventTypeChildAdded
                                                                 withBlock:^(FDataSnapshot *snapshot) {
-                                                                    
+                                                                    NSLog(@"---------- message list manager --------");
+                                                                    NSLog(@"snapshot -------> %@", snapshot.key);
                                                                     // post
                                                                     [NSNotification notificationWithName:kQueryMessage object:self];
+                                                                    
                                                                     [[NSNotificationCenter defaultCenter] postNotificationName:kQueryMessage
                                                                                                                         object:self
                                                                                                                       userInfo:(NSDictionary*)snapshot];
@@ -157,6 +175,14 @@ static NSString * const kCreateRoom = @"createRoom";
                                                           withCancelBlock:^(NSError *error) {
                                                               NSLog(@"error %@",error);
                                                           }];
+    
+    
+//    [_fbMessageListManager observeEventType:FEventTypeChildAdded andPreviousSiblingKeyWithBlock:^(FDataSnapshot *snapshot, NSString *prevKey) {
+//        NSLog(@"----------------- %@", snapshot);
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kQueryMessage
+//                                                            object:self
+//                                                          userInfo:(NSDictionary*)snapshot];
+//    }];
 }
 
 @end
