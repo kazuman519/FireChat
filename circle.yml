@@ -8,6 +8,8 @@ dependencies:
   override:
     - pod install:
         timeout: 300
+    - bundle install:
+        timeout: 300
 deployment: 
   beta: 
     branch: master 
